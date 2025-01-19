@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <img src="imagenes/corazon.png" alt="Fondo de resultados" class="background-image">
+        <div class="content">
+        <h1>Resultados de Compatibilidad</h1>
+
+        <!-- Aquí se mostrará el porcentaje -->
+        <p id="percentageText" style="color: rgb(232, 12, 137); font-size: 24px; font-weight: bolder;"></p>
+
+        <!-- Aquí se mostrará la imagen -->
+        <img id="resultImage" src="" alt="Resultado" style="width: 200px; height: auto; margin-bottom: 20px;">
+
+        <!-- Aquí se mostrará el texto explicativo -->
+        <p id="resultText"></p>
+
+        <!-- Botón para volver -->
+        <button onclick="goBack()">Volver</button>
+    </div>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+const name1 = params.get('name1');
+const name2 = params.get('name2');
+const compatibility = parseInt(params.get('compatibility')); // Convertir a número
+
+// Referencias a los elementos del HTML
+const percentageText = document.getElementById('percentageText');
+const resultImage = document.getElementById('resultImage');
+const resultText = document.getElementById('resultText');
+
+// Mostrar el porcentaje
+percentageText.textContent = `Compatibilidad: ${compatibility}%`;
+let imageSrc;
+
+if (compatibility < 20) {
+    imageSrc = 'imagenes/CULERA.png'; // Imagen para baja compatibilidad
+    text = '¡JAJAJJ, Ni volviendo a nacer aferrad@.';
+} else if (compatibility < 40) {
+    imageSrc = 'imagenes/MALA.jpg'; // Imagen para compatibilidad regular
+    text = '2/3 mejor nadotaaa.';
+} else if (compatibility < 60) {
+    imageSrc = 'imagenes/REGULAR.jpg'; // Imagen para buena compatibilidad
+    text = 'yo creo que si se les daria, pero muy x.';
+} else if (compatibility < 80) {
+    imageSrc = 'imagenes/MUY BUENA.png'; // Imagen para alta compatibilidad
+    text ='hay amor, sin grandes expectativas pero se te puede dar.'
+} else {
+    imageSrc = 'imagenes/EXCELENTE.png'; // Imagen para excelente compatibilidad
+      text ='destinados a adquirir un credito infonavit juntooos.'
+}
+
+resultImage.src = imageSrc;
+resultText.textContent = text;
+
+// Función para volver a la página principal
+function goBack() {
+    window.location.href = 'index.html';
+
+        }
+    </script>
+</body>
+</html>
+
